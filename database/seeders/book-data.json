@@ -1,0 +1,123 @@
+[
+    {
+        "title": "A Tale of Two Cities",
+        "slug": "a-tale-of-two-cities",
+        "author": "Charles Dickens",
+        "category": "Classic",
+        "cover_image_path": "a_tale_of_two_Cities.jpeg",
+        "quantity": 3,
+        "description": "Novel klasik berlatar London dan Paris menjelang serta selama Revolusi Prancis, mengikuti Dr. Manette, putrinya Lucie, dan dua pria yang mencintainya.",
+        "created_at": "2025-10-21T11:00:00+07:00",
+        "updated_at": "2025-10-21T11:00:00+07:00"
+    },
+    {
+        "title": "Bumi",
+        "slug": "bumi",
+        "author": "Tere Liye",
+        "category": "Fantasy (YA)",
+        "cover_image_path": "bumi_by_tere-liye.jpg",
+        "quantity": 2,
+        "description": "Awal seri petualangan Raib, Seli, dan Ali—remaja dengan kemampuan khusus dari klan berbeda—yang terseret ke dunia paralel dan misi menyelamatkan Bumi.",
+        "created_at": "2025-10-21T11:00:00+07:00",
+        "updated_at": "2025-10-21T11:00:00+07:00"
+    },
+    {
+        "title": "Chirping Town",
+        "slug": "chirping-town",
+        "author": "Aranindy",
+        "category": "Speculative Fiction",
+        "cover_image_path": "chirping_town_by_aranindy.png",
+        "quantity": 2,
+        "description": "Buku kedua dari The Capital Series—sebuah dunia futuristik yang serba-terencana, menghadirkan kritik sosial melalui kisah karakter-karakternya.",
+        "created_at": "2025-10-21T11:00:00+07:00",
+        "updated_at": "2025-10-21T11:00:00+07:00"
+    },
+    {
+        "title": "Cinderella dari Sisilia",
+        "slug": "cinderella-dari-sisilia",
+        "author": "Sharon Kendrick",
+        "category": "Romance",
+        "cover_image_path": "Cinderella_Dari_sisilia.png",
+        "quantity": 1,
+        "description": "Edisi Indonesia dari \"Cinderella in the Sicilian's World\"—romansa Harlequin tentang Lina dan miliuner Sisilia, Salvatore.",
+        "created_at": "2025-10-21T11:00:00+07:00",
+        "updated_at": "2025-10-21T11:00:00+07:00"
+    },
+    {
+        "title": "Das Kapital for Beginners",
+        "slug": "das-kapital-for-beginners",
+        "author": "Arif Rahman & Adi “Pay” Prabowo",
+        "category": "Economics",
+        "cover_image_path": "das_kapital_for_beginners_by_arif-rahman&adi-pay-prabowo.png",
+        "quantity": 3,
+        "description": "Pengantar populer yang menyorot kondisi ekonomi Indonesia melalui kacamata pemikiran Karl Marx dalam Das Kapital.",
+        "created_at": "2025-10-21T11:00:00+07:00",
+        "updated_at": "2025-10-21T11:00:00+07:00"
+    },
+    {
+        "title": "Every Thought Captive",
+        "slug": "every-thought-captive",
+        "author": "Kyle Idleman",
+        "category": "Christian Living",
+        "cover_image_path": "every_thought_captive_by_kyle_idleman.png",
+        "quantity": 2,
+        "description": "Panduan praktis dan biblis untuk menaklukkan pola pikir destruktif dan mengalami pembaruan pikiran—satu pikiran setiap kali.",
+        "created_at": "2025-10-21T11:00:00+07:00",
+        "updated_at": "2025-10-21T11:00:00+07:00"
+    },
+    {
+        "title": "Flawless",
+        "slug": "flawless-lady-leo",
+        "author": "Lady Leo",
+        "category": "Romance",
+        "cover_image_path": "flawless_by_lady-leo.png",
+        "quantity": 1,
+        "description": "Romansa selebritas–musisi: Rangga Nebula, Alivia, dan Alana Aurorae terjebak dalam pusaran karier, rumor, dan pilihan hati yang pelik.",
+        "created_at": "2025-10-21T11:00:00+07:00",
+        "updated_at": "2025-10-21T11:00:00+07:00"
+    },
+    {
+        "title": "If You Could See the Sun",
+        "slug": "if-you-could-see-the-sun",
+        "author": "Ann Liang",
+        "category": "Young Adult",
+        "cover_image_path": "if_you_could_see_the_sun_by_ann_liang.png",
+        "quantity": 3,
+        "description": "Seorang siswi tiba-tiba menjadi 'invisible' dan memonetisasi kekuatannya dengan menjual rahasia teman-teman sekolah elit demi membayar biaya sekolah.",
+        "created_at": "2025-10-21T11:00:00+07:00",
+        "updated_at": "2025-10-21T11:00:00+07:00"
+    },
+    {
+        "title": "Simplicity Amplified: Pendekatan Ergonomi, Semantik, dan Estetika dalam Desain Produk",
+        "slug": "simplicity-amplified-ergonomi-semantik-estetika",
+        "author": "D. Yunidar, T. Zulkarnain M., T.J. Barr",
+        "category": "Design",
+        "cover_image_path": "Simplicity_Amplified_D.yunidar, T. Zulkarnain M., T.J. Barr.png",
+        "quantity": 4,
+        "description": "Referensi desain produk yang memadukan ergonomi, semantik, dan estetika dengan metodologi riset pengguna dan praktik desain terkini.",
+        "created_at": "2025-10-21T11:00:00+07:00",
+        "updated_at": "2025-10-21T11:00:00+07:00"
+    },
+    {
+        "title": "The Little Prince",
+        "slug": "the-little-prince",
+        "author": "Antoine de Saint-Exupéry",
+        "category": "Children's",
+        "cover_image_path": "The_Little_prince_by_antoine_de_saint_Exupery.jpg",
+        "quantity": 2,
+        "description": "Novela filosofis tentang pertemuan pilot dengan seorang pangeran kecil—kisah persahabatan, kehilangan, dan melihat 'dengan hati'.",
+        "created_at": "2025-10-21T11:00:00+07:00",
+        "updated_at": "2025-10-21T11:00:00+07:00"
+    },
+    {
+        "title": "Who Rules the World?",
+        "slug": "who-rules-the-world",
+        "author": "Noam Chomsky",
+        "category": "Politics",
+        "cover_image_path": "who_rules_the_world_by_noam-chomsky.png",
+        "quantity": 2,
+        "description": "Telaah tajam tentang kebijakan luar negeri AS pasca-9/11, meredupnya 'American Century', serta bahaya mendahulukan kekuasaan di atas demokrasi dan HAM.",
+        "created_at": "2025-10-21T11:00:00+07:00",
+        "updated_at": "2025-10-21T11:00:00+07:00"
+    }
+]
