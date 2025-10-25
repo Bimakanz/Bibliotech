@@ -16,7 +16,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="relative min-h-screen overflow-hidden bg-[#f6f1e8] text-[#24323f] antialiased" style="font-family: 'Inter', sans-serif;">
+<body class="relative min-h-screen overflow-auto bg-[#f6f1e8] text-[#24323f] antialiased" style="font-family: 'Inter', sans-serif;">
     <div class="pointer-events-none fixed inset-0 overflow-hidden">
         <div class="absolute -top-40 left-0 h-96 w-96 -translate-x-1/3 rounded-full bg-[#0f766e]/20 blur-3xl"></div>
         <div class="absolute top-32 right-0 h-[30rem] w-[30rem] translate-x-1/4 rounded-full bg-[#f4bb7a]/35 blur-3xl"></div>
@@ -54,11 +54,6 @@
                             <p class="mt-1">Temukan buku favoritmu, baca sinopsis, dan ajukan peminjaman dalam satu alur.</p>
                         </div>
                     </div>
-                </div>
-
-                <div class="flex items-center gap-2 rounded-full border border-[#dcd2bd] bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-[#6b766f]">
-                    <span class="material-symbols-rounded text-base text-[#0f766e]">verified_user</span>
-                    Enkripsi CSRF & validasi kredensial
                 </div>
             </div>
 

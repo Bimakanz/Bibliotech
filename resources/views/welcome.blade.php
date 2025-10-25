@@ -241,10 +241,7 @@
                                     </div>
 
                                     <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                                        <span class="inline-flex items-center gap-2 rounded-full bg-[#dcfce7] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#166534]">
-                                            <span class="material-symbols-rounded text-base">inventory_2</span>
-                                            Stok {{ $book->quantity }}
-                                        </span>
+                                        
                                         <div class="flex flex-col gap-2 sm:flex-row">
                                             <a href="{{ route('landing.books.show', $book) }}" class="inline-flex items-center justify-center gap-2 rounded-full border border-[#0f766e]/30 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#0f766e] transition hover:border-[#0f766e]/60 hover:bg-[#0f766e]/10">
                                                 <span class="material-symbols-rounded text-base">stylus_note</span>
@@ -281,9 +278,42 @@
                 </div>
 
                 <div class="mt-10 flex justify-center">
-                    <div class="rounded-full border border-[#dcd2bd] bg-white/80 px-6 py-3 text-sm text-[#4c5b54] shadow-sm">
-                        {{ $books->links() }}
-                    </div>
+                    <nav class="flex items-center gap-2">
+                        <!-- Previous button -->
+                        @if ($books->onFirstPage())
+                            <span class="inline-flex items-center justify-center rounded-full bg-gray-200 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 cursor-not-allowed">
+                                <span class="material-symbols-rounded text-base">chevron_left</span>
+                            </span>
+                        @else
+                            <a href="{{ $books->previousPageUrl() }}" class="inline-flex items-center justify-center rounded-full bg-[#0f766e] px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[#115e59]">
+                                <span class="material-symbols-rounded text-base">chevron_left</span>
+                            </a>
+                        @endif
+
+                        <!-- Page numbers -->
+                        @foreach ($books->getUrlRange(1, $books->lastPage()) as $page => $url)
+                            @if ($page == $books->currentPage())
+                                <span class="inline-flex items-center justify-center rounded-full bg-[#0f766e] px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white">
+                                    {{ $page }}
+                                </span>
+                            @else
+                                <a href="{{ $url }}" class="inline-flex items-center justify-center rounded-full bg-[#dcd2bd] px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[#4c5b54] transition hover:bg-[#fdf4e3]">
+                                    {{ $page }}
+                                </a>
+                            @endif
+                        @endforeach
+
+                        <!-- Next button -->
+                        @if ($books->hasMorePages())
+                            <a href="{{ $books->nextPageUrl() }}" class="inline-flex items-center justify-center rounded-full bg-[#0f766e] px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[#115e59]">
+                                <span class="material-symbols-rounded text-base">chevron_right</span>
+                            </a>
+                        @else
+                            <span class="inline-flex items-center justify-center rounded-full bg-gray-200 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 cursor-not-allowed">
+                                <span class="material-symbols-rounded text-base">chevron_right</span>
+                            </span>
+                        @endif
+                    </nav>
                 </div>
             </div>
         </section>

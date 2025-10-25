@@ -28,8 +28,8 @@
                 <p class="text-sm leading-relaxed text-[#4c5b54]">{{ $book->description }}</p>
             </div>
 
-            <div class="rounded-[1.75rem] border border-[#dcd2bd] bg-[#fdf4e3] px-4 py-3 text-xs text-[#5f6b63]">
-                Tips: Waktu peminjaman maksimal 14 hari. Pastikan mengembalikan tepat waktu agar akunmu tetap aktif.
+            <div class="rounded-[1.75rem] text-center border border-[#dcd2bd] bg-[#fdf4e3] px-4 py-3 text-xs text-[#5f6b63]">
+                Peringatan !! <br>Waktu peminjaman maksimal 14 hari. Pastikan mengembalikan tepat waktu agar akunmu tetap aktif.
             </div>
         </div>
 

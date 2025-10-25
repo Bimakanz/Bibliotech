@@ -15,21 +15,21 @@
                 <input id="q" type="text" name="q" value="{{ $search }}" placeholder="Masukkan kata kunci" class="w-full border-0 bg-transparent text-sm text-[#172a37] placeholder:text-[#9aa29a] focus:ring-0" />
             </div>
         </div>
-        <div class="grid gap-3 md:grid-cols-2 md:items-center">
-            <div>
-                <label for="category" class="text-xs font-semibold uppercase tracking-[0.3em] text-[#6b766f]">Kategori</label>
-                <select id="category" name="category" class="mt-2 w-full rounded-[1.75rem] border border-[#dcd2bd] bg-white px-4 py-2.5 text-sm text-[#172a37] focus:border-[#0f766e] focus:outline-none focus:ring-2 focus:ring-[#0f766e]/20">
-                    <option value="">Semua kategori</option>
-                    @foreach ($categories as $item)
-                        <option value="{{ $item }}" @selected($item === $category)>{{ $item }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <button type="submit" class="inline-flex items-center justify-center gap-2 rounded-full bg-[#0f766e] px-5 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-[#115e59]">
-                <span class="material-symbols-rounded text-base">filter_alt</span>
-                Terapkan Filter
-            </button>
-        </div>
+                <div class="grid gap-3 md:grid-cols-2 md:items-center">
+                    <div>
+                        <label for="category" class="text-xs font-semibold uppercase tracking-[0.3em] text-[#6b766f]">Kategori</label>
+                        <select id="category" name="category" class="mt-2 w-full rounded-[1.75rem] border border-[#dcd2bd] bg-white px-5 py-3 text-sm text-[#172a37] focus:border-[#0f766e] focus:outline-none focus:ring-2 focus:ring-[#0f766e]/20">
+                            <option value="">Semua kategori</option>
+                            @foreach ($categories as $item)
+                                <option value="{{ $item }}" @selected($item === $category)>{{ $item }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <button type="submit" class="inline-flex items-center justify-center gap-2 rounded-full mt-7 bg-[#0f766e] px-4 py-2.5 text-sm font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-[#115e59]">
+                        <span class="material-symbols-rounded text-base">filter_alt</span>
+                        Terapkan Filter
+                    </button>
+                </div>
     </form>
 
     <div class="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
@@ -70,7 +70,42 @@
         @endforelse
     </div>
 
-    <div>
-        {{ $books->links() }}
+    <div class="flex justify-center mt-6">
+        <nav class="flex items-center gap-2">
+            <!-- Previous button -->
+            @if ($books->onFirstPage())
+                <span class="inline-flex items-center justify-center rounded-full bg-gray-200 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 cursor-not-allowed">
+                    <span class="material-symbols-rounded text-base">chevron_left</span>
+                </span>
+            @else
+                <a href="{{ $books->previousPageUrl() }}" class="inline-flex items-center justify-center rounded-full bg-[#0f766e] px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[#115e59]">
+                    <span class="material-symbols-rounded text-base">chevron_left</span>
+                </a>
+            @endif
+
+            <!-- Page numbers -->
+            @foreach ($books->getUrlRange(1, $books->lastPage()) as $page => $url)
+                @if ($page == $books->currentPage())
+                    <span class="inline-flex items-center justify-center rounded-full bg-[#0f766e] px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white">
+                        {{ $page }}
+                    </span>
+                @else
+                    <a href="{{ $url }}" class="inline-flex items-center justify-center rounded-full bg-[#dcd2bd] px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[#4c5b54] transition hover:bg-[#fdf4e3]">
+                        {{ $page }}
+                    </a>
+                @endif
+            @endforeach
+
+            <!-- Next button -->
+            @if ($books->hasMorePages())
+                <a href="{{ $books->nextPageUrl() }}" class="inline-flex items-center justify-center rounded-full bg-[#0f766e] px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[#115e59]">
+                    <span class="material-symbols-rounded text-base">chevron_right</span>
+                </a>
+            @else
+                <span class="inline-flex items-center justify-center rounded-full bg-gray-200 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 cursor-not-allowed">
+                    <span class="material-symbols-rounded text-base">chevron_right</span>
+                </span>
+            @endif
+        </nav>
     </div>
 </x-app-layout>

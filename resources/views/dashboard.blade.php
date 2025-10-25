@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="pageHeading">
-        Dasbor Pribadi
+        Dashboard Pribadi
     </x-slot>
 
     <x-slot name="pageDescription">

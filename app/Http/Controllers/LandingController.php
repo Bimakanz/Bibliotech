@@ -26,7 +26,7 @@ class LandingController extends Controller
             })
             ->when($category !== '', fn ($query) => $query->where('category', $category))
             ->orderBy('title')
-            ->paginate(9)
+            ->paginate(10)
             ->withQueryString();
 
         $categories = Book::query()

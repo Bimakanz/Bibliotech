@@ -29,72 +29,165 @@
     </style>
     
     <div class="overflow-hidden rounded-[2.5rem] border border-[#dcd2bd] bg-white/85 shadow-[0_25px_70px_-45px_rgba(15,87,82,0.45)]">
-        <table class="min-w-full divide-y divide-[#eaddc2] text-sm">
-            <thead class="bg-[#fff7ec]">
-                <tr>
-                    <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-[#6b766f]">No</th>
-                    <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-[#6b766f]">Buku</th>
-                    <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-[#6b766f]">Kategori</th>
-                    <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-[#6b766f]">Gambar</th>
-                    <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-[#6b766f]">Stok</th>
-                    <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-[#6b766f]">Deskripsi</th>
-                    <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-[#6b766f]">Aksi</th>
-                </tr>
-            </thead>
-            <tbody class="divide-y divide-[#f1e6cf]">
-                @forelse ($books as $book)
-                    <tr class="hover:bg-[#fdf4e3]/60">
-                        <td class="px-4 py-4 text-xs font-semibold uppercase tracking-[0.3em] text-[#9aa29a]">{{ $loop->iteration + ($books->currentPage() - 1) * $books->perPage() }}</td>
-                        <td class="px-4 py-4">
-                            <p class="font-semibold text-[#172a37]" style="font-family: 'Space Grotesk', sans-serif;">{{ $book->title }}</p>
-                            <p class="text-xs text-[#4c5b54]">{{ $book->author ?? 'Penulis tidak diketahui' }}</p>
-                        </td>
-                        <td class="px-4 py-4 text-xs font-medium uppercase tracking-[0.3em] text-[#b95d23]">{{ $book->category }}</td>
-                        <td class="px-4 py-4">
+        <!-- Desktop Table (hidden on mobile) -->
+        <div class="hidden md:block">
+            <table class="min-w-full divide-y divide-[#eaddc2] text-sm">
+                <thead class="bg-[#fff7ec]">
+                    <tr>
+                        <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-[#6b766f]">No</th>
+                        <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-[#6b766f]">Buku</th>
+                        <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-[#6b766f]">Kategori</th>
+                        <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-[#6b766f]">Gambar</th>
+                        <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-[#6b766f]">Stok</th>
+                        <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-[#6b766f]">Deskripsi</th>
+                        <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-[#6b766f]">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-[#f1e6cf]">
+                    @forelse ($books as $book)
+                        <tr class="hover:bg-[#fdf4e3]/60">
+                            <td class="px-4 py-4 text-xs font-semibold uppercase tracking-[0.3em] text-[#9aa29a]">{{ $loop->iteration + ($books->currentPage() - 1) * $books->perPage() }}</td>
+                            <td class="px-4 py-4">
+                                <p class="font-semibold text-[#172a37]" style="font-family: 'Space Grotesk', sans-serif;">{{ $book->title }}</p>
+                                <p class="text-xs text-[#4c5b54]">{{ $book->author ?? 'Penulis tidak diketahui' }}</p>
+                            </td>
+                            <td class="px-4 py-4 text-xs font-medium uppercase tracking-[0.3em] text-[#b95d23]">{{ $book->category }}</td>
+                            <td class="px-4 py-4">
+                                <div class="h-16 w-16 overflow-hidden rounded-[1.25rem] border border-[#eaddc2] bg-[#f6ecda]">
+                                    @if ($book->cover_image_path)
+                                        <img src="{{ asset('storage/'.$book->cover_image_path) }}" alt="Sampul {{ $book->title }}" class="h-full w-full object-cover" />
+                                    @else
+                                        <div class="flex h-full w-full items-center justify-center text-[10px] font-semibold uppercase tracking-[0.3em] text-[#b69c74]">Tanpa</div>
+                                    @endif
+                                </div>
+                            </td>
+                            <td class="px-4 py-4 text-center text-sm font-semibold {{ $book->quantity > 0 ? 'text-[#0f766e]' : 'text-[#be123c]' }}">{{ $book->quantity }}</td>
+                            <td class="px-4 py-4 text-xs text-[#4c5b54]">
+                                <p class="max-w-sm leading-relaxed">{{ \Illuminate\Support\Str::limit($book->description, 120) }}</p>
+                            </td>
+                            <td class="px-4 py-4">
+                                <div class="flex flex-col gap-2">
+                                    <a href="{{ route('admin.books.edit', $book) }}" class="inline-flex items-center gap-2 rounded-full border border-[#0f766e]/40 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-[#0f766e] transition hover:border-[#0f766e]/60 hover:bg-[#0f766e]/10">
+                                        <span class="material-symbols-rounded text-base">edit</span>
+                                        Edit
+                                    </a>
+                                    <a href="{{ route('admin.books.show', $book) }}" class="inline-flex items-center gap-2 rounded-full border border-[#dcd2bd] px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-[#4c5b54] transition hover:bg-[#fdf4e3]">
+                                        <span class="material-symbols-rounded text-base">visibility</span>
+                                        Detail
+                                    </a>
+                                    <form method="POST" action="{{ route('admin.books.destroy', $book) }}" class="delete-form" data-book-title="{{ $book->title }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#be123c] px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-[#991b1b] delete-btn">
+                                            <span class="material-symbols-rounded text-base">delete</span>
+                                            Hapus
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="7" class="px-4 py-6 text-center text-sm text-[#4c5b54]">Belum ada data buku. Tambahkan buku pertama Anda.</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Mobile Cards (hidden on desktop) -->
+        <div class="md:hidden divide-y divide-[#f1e6cf]">
+            @forelse ($books as $book)
+                <div class="p-4 hover:bg-[#fdf4e3]/60 transition">
+                    <div class="flex items-start gap-4">
+                        <!-- Gambar -->
+                        <div class="flex-shrink-0">
                             <div class="h-16 w-16 overflow-hidden rounded-[1.25rem] border border-[#eaddc2] bg-[#f6ecda]">
                                 @if ($book->cover_image_path)
                                     <img src="{{ asset('storage/'.$book->cover_image_path) }}" alt="Sampul {{ $book->title }}" class="h-full w-full object-cover" />
                                 @else
-                                    <div class="flex h-full w-full items-center justify-center text-[10px] font-semibold uppercase tracking-[0.3em] text-[#b69c74]">Tanpa</div>
+                                    <div class="flex h-full w-full items-center justify-center text-[8px] font-semibold uppercase tracking-[0.2em] text-[#b69c74]">Tanpa</div>
                                 @endif
                             </div>
-                        </td>
-                        <td class="px-4 py-4 text-center text-sm font-semibold {{ $book->quantity > 0 ? 'text-[#0f766e]' : 'text-[#be123c]' }}">{{ $book->quantity }}</td>
-                        <td class="px-4 py-4 text-xs text-[#4c5b54]">
-                            <p class="max-w-sm leading-relaxed">{{ \Illuminate\Support\Str::limit($book->description, 120) }}</p>
-                        </td>
-                        <td class="px-4 py-4">
-                            <div class="flex flex-col gap-2">
-                                <a href="{{ route('admin.books.edit', $book) }}" class="inline-flex items-center gap-2 rounded-full border border-[#0f766e]/40 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-[#0f766e] transition hover:border-[#0f766e]/60 hover:bg-[#0f766e]/10">
-                                    <span class="material-symbols-rounded text-base">edit</span>
+                        </div>
+                        
+                        <!-- Informasi Buku -->
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center justify-between">
+                                <p class="font-semibold text-[#172a37] text-sm" style="font-family: 'Space Grotesk', sans-serif;">{{ $book->title }}</p>
+                                <span class="text-xs font-semibold {{ $book->quantity > 0 ? 'text-[#0f766e]' : 'text-[#be123c]' }}">{{ $book->quantity }}</span>
+                            </div>
+                            <p class="text-xs text-[#4c5b54] mt-1">{{ $book->author ?? 'Penulis tidak diketahui' }}</p>
+                            <p class="text-xs font-medium uppercase tracking-[0.3em] text-[#b95d23] mt-1">{{ $book->category }}</p>
+                            <p class="text-xs text-[#4c5b54] mt-2 line-clamp-2">{{ \Illuminate\Support\Str::limit($book->description, 80) }}</p>
+                            
+                            <!-- Aksi untuk mobile -->
+                            <div class="flex flex-wrap gap-2 mt-3">
+                                <a href="{{ route('admin.books.edit', $book) }}" class="inline-flex items-center gap-1 rounded-full border border-[#0f766e]/40 px-2 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[#0f766e] transition hover:border-[#0f766e]/60 hover:bg-[#0f766e]/10">
+                                    <span class="material-symbols-rounded text-xs">edit</span>
                                     Edit
                                 </a>
-                                <a href="{{ route('admin.books.show', $book) }}" class="inline-flex items-center gap-2 rounded-full border border-[#dcd2bd] px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-[#4c5b54] transition hover:bg-[#fdf4e3]">
-                                    <span class="material-symbols-rounded text-base">visibility</span>
+                                <a href="{{ route('admin.books.show', $book) }}" class="inline-flex items-center gap-1 rounded-full border border-[#dcd2bd] px-2 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[#4c5b54] transition hover:bg-[#fdf4e3]">
+                                    <span class="material-symbols-rounded text-xs">visibility</span>
                                     Detail
                                 </a>
-                                <form method="POST" action="{{ route('admin.books.destroy', $book) }}" class="delete-form" data-book-title="{{ $book->title }}">
+                                <form method="POST" action="{{ route('admin.books.destroy', $book) }}" class="delete-form-mobile" data-book-title="{{ $book->title }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#be123c] px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-[#991b1b] delete-btn">
-                                        <span class="material-symbols-rounded text-base">delete</span>
+                                    <button type="submit" class="inline-flex items-center gap-1 rounded-full bg-[#be123c] px-2 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[#991b1b] delete-btn-mobile">
+                                        <span class="material-symbols-rounded text-xs">delete</span>
                                         Hapus
                                     </button>
                                 </form>
                             </div>
-                        </td>
-                    </tr>
-                @empty
-                    <tr>
-                        <td colspan="7" class="px-4 py-6 text-center text-sm text-[#4c5b54]">Belum ada data buku. Tambahkan buku pertama Anda.</td>
-                    </tr>
-                @endforelse
-            </tbody>
-        </table>
+                        </div>
+                    </div>
+                </div>
+            @empty
+                <div class="p-6 text-center text-sm text-[#4c5b54]">
+                    Belum ada data buku. Tambahkan buku pertama Anda.
+                </div>
+            @endforelse
+        </div>
     </div>
 
-    <div>
-        {{ $books->links() }}
+    <div class="flex justify-center mt-6">
+        <nav class="flex items-center gap-2">
+            <!-- Previous button -->
+            @if ($books->onFirstPage())
+                <span class="inline-flex items-center justify-center rounded-full bg-gray-200 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 cursor-not-allowed">
+                    <span class="material-symbols-rounded text-base">chevron_left</span>
+                </span>
+            @else
+                <a href="{{ $books->previousPageUrl() }}" class="inline-flex items-center justify-center rounded-full bg-[#0f766e] px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[#115e59]">
+                    <span class="material-symbols-rounded text-base">chevron_left</span>
+                </a>
+            @endif
+
+            <!-- Page numbers -->
+            @foreach ($books->getUrlRange(1, $books->lastPage()) as $page => $url)
+                @if ($page == $books->currentPage())
+                    <span class="inline-flex items-center justify-center rounded-full bg-[#0f766e] px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white">
+                        {{ $page }}
+                    </span>
+                @else
+                    <a href="{{ $url }}" class="inline-flex items-center justify-center rounded-full bg-[#dcd2bd] px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[#4c5b54] transition hover:bg-[#fdf4e3]">
+                        {{ $page }}
+                    </a>
+                @endif
+            @endforeach
+
+            <!-- Next button -->
+            @if ($books->hasMorePages())
+                <a href="{{ $books->nextPageUrl() }}" class="inline-flex items-center justify-center rounded-full bg-[#0f766e] px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[#115e59]">
+                    <span class="material-symbols-rounded text-base">chevron_right</span>
+                </a>
+            @else
+                <span class="inline-flex items-center justify-center rounded-full bg-gray-200 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 cursor-not-allowed">
+                    <span class="material-symbols-rounded text-base">chevron_right</span>
+                </span>
+            @endif
+        </nav>
     </div>
     
     <!-- Modal Konfirmasi Hapus -->
@@ -145,6 +238,19 @@
                 button.addEventListener('click', function(e) {
                     e.preventDefault();
                     currentForm = this.closest('.delete-form');
+                    const title = currentForm.getAttribute('data-book-title');
+                    bookTitle.textContent = title;
+                    showDeleteModal();
+                });
+            });
+            
+            // Handle mobile delete buttons
+            const deleteButtonsMobile = document.querySelectorAll('.delete-btn-mobile');
+            
+            deleteButtonsMobile.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    currentForm = this.closest('.delete-form-mobile');
                     const title = currentForm.getAttribute('data-book-title');
                     bookTitle.textContent = title;
                     showDeleteModal();

@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ $title ?? config('app.name', 'Bibliotheck') }}</title>
-
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@
         $isAdmin = $user?->isAdmin();
         $navItems = $isAdmin
             ? [
-                ['label' => 'Dasbor', 'route' => route('admin.dashboard'), 'active' => request()->routeIs('admin.dashboard'), 'icon' => 'space_dashboard'],
+                ['label' => 'Dashboard', 'route' => route('admin.dashboard'), 'active' => request()->routeIs('admin.dashboard'), 'icon' => 'space_dashboard'],
                 ['label' => 'Kelola Buku', 'route' => route('admin.books.index'), 'active' => request()->routeIs('admin.books.*'), 'icon' => 'menu_book'],
                 ['label' => 'Peminjaman', 'route' => route('admin.borrowings.index'), 'active' => request()->routeIs('admin.borrowings.*'), 'icon' => 'swap_calls'],
             ]
@@ -113,16 +113,6 @@
                                         {{ $pageDescription }}
                                     </p>
                                 @endif
-                            </div>
-                            <div class="flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.3em] text-[#6b766f]">
-                                <span class="inline-flex items-center gap-2 rounded-full border border-[#dcd2bd] bg-white px-4 py-2">
-                                    <span class="material-symbols-rounded text-base text-[#0f766e]">lock</span>
-                                    Sesi aman
-                                </span>
-                                <span class="inline-flex items-center gap-2 rounded-full border border-[#dcd2bd] bg-white px-4 py-2">
-                                    <span class="material-symbols-rounded text-base text-[#f97316]">insights</span>
-                                    Data real-time
-                                </span>
                             </div>
                         </div>
                     </div>

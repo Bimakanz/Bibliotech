@@ -28,7 +28,7 @@ class BookController extends Controller
             ->when($category->isNotEmpty(), fn ($query) => $query->where('category', $category))
             ->available()
             ->orderBy('title')
-            ->paginate(9)
+            ->paginate(10)
             ->withQueryString();
 
         $categories = Book::query()
