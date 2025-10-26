@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $title ?? 'Masuk | Bibliotheck' }}</title>
+    <title>{{ $title ?? 'Masuk | Bibliotech' }}</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,7 +29,7 @@
                 <div class="space-y-6">
                     <span class="inline-flex items-center gap-2 rounded-full border border-[#f4bb7a] bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-[#b95d23]">
                         <span class="material-symbols-rounded text-sm">auto_stories</span>
-                        Bibliotheck
+                        Bibliotech
                     </span>
                     <h1 class="text-4xl font-semibold leading-tight text-[#172a37]" style="font-family: 'Space Grotesk', sans-serif;">
                         Sistem perpustakaan sekolah yang dirancang ulang untuk kolaborasi dan kurasi.
@@ -65,7 +65,7 @@
                     <div>
                         <p class="text-xs font-semibold uppercase tracking-[0.35em] text-[#6b766f]">Portal aman</p>
                         <h2 class="text-xl font-semibold text-[#172a37]" style="font-family: 'Space Grotesk', sans-serif;">
-                            Masuk ke Bibliotheck
+                            Masuk ke Bibliotech
                         </h2>
                     </div>
                 </div>
@@ -75,12 +75,12 @@
                     <p class="text-xs text-[#9aa29a]">Belum punya akun? Hubungi petugas perpustakaan sekolah.</p>
                 </div>
 
-                <div class="space-y-6">
+                <div class="space-y-6 animate-fadeInUp">
                     {{ $slot }}
                 </div>
 
                 <p class="pt-6 text-center text-xs text-[#9aa29a]">
-                    &copy; {{ now()->year }} Bibliotheck • Sistem Peminjaman Buku berbasis Digital
+                    &copy; {{ now()->year }} Bibliotech • Sistem Peminjaman Buku berbasis Digital
                 </p>
             </div>
         </div>

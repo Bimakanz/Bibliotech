@@ -4,7 +4,7 @@
     </x-slot>
 
     <x-slot name="pageDescription">
-        Perbarui informasi akun, kata sandi, dan kelola akses Bibliotheck-mu.
+        Perbarui informasi akun, kata sandi, dan kelola akses Bibliotech-mu.
     </x-slot>
 
     <div class="space-y-6">
