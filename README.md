@@ -1,4 +1,4 @@
-# Bibliotheck — School Library Management
+# Bibliotech — School Library Management
 
 **Bibliotheck** adalah aplikasi perpustakaan sekolah berbasis Laravel 12 dengan arsitektur multi-peran. Versi terbaru ini menghadirkan perubahan identitas penuh sekaligus pembaruan antarmuka secara menyeluruh dengan palet hangat, tata letak baru, dan pengalaman pengguna yang lebih editorial.
 
